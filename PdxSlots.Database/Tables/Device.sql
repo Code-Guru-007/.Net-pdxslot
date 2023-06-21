@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[Device]
+(
+	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	[UserId] INT NULL,
+	[IpAddress] NVARCHAR(500) NOT NULL,
+	[OperatingSystem] NVARCHAR(500) NOT NULL,
+	[Browser] NVARCHAR(500) NOT NULL,
+	[Mobile] BIT NOT NULL,
+	[Created] DATETIME NOT NULL DEFAULT GETDATE(),
+	CONSTRAINT [FK_Device_User] FOREIGN KEY ([UserId]) REFERENCES [dbo].[User] ([Id]),
+)

@@ -1,0 +1,11 @@
+﻿CREATE TABLE [dbo].[ZippedFile]
+(
+	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY,
+	[ZipFileUploadId] INT NOT NULL,
+	[LocalFilePath] NVARCHAR(500) NOT NULL,
+	[FileUrl] NVARCHAR(500) NOT NULL,
+	[Hash] NVARCHAR(MAX) NOT NULL,
+	[HashCheck] BIT NOT NULL DEFAULT 0,
+	[Created] DATETIME NOT NULL DEFAULT GETDATE(),
+	CONSTRAINT [FK_ZippedFile_ZipFileUpload] FOREIGN KEY ([ZipFileUploadId]) REFERENCES [dbo].[ZipFileUpload] ([Id])
+)
